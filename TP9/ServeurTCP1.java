@@ -1,12 +1,17 @@
 import java.io.*;
 import java.net.*;
 
-DatagramSocket sock = new DatagramSocket (1234);
-while(true)
+public class ServeurTCP1 
 {
-	System.out.println("-Waiting data");
-	DatagramPacket packet = new DatagramPacket(new byte[1024], 1024);
-	sock.recieve(packet);
-	String str = new String(packet.getData());
-	System.out.println("str=" + str);
+	public static void main(String[] args) throws Exception 
+	{
+		ServerSocket socketserver  = new ServerSocket(2016);
+		System.out.println("serveur en attente");
+		Socket socket = socketserver.accept();
+		System.out.println("Connection d'un client");
+		DataInputStream dIn = new DataInputStream(socket.getInputStream());
+		System.out.println("Message: " + dIn.readUTF());
+		socket.close();
+		socketserver.close();
+	}
 }

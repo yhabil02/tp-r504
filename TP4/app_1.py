@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, request, render_template
 import mysql.connector
 
 app = Flask(__name__)
@@ -14,6 +14,26 @@ db_config = {
 # Initialize MySQL connection
 conn = mysql.connector.connect(**db_config)
 cursor = conn.cursor() 
+
+
+@app.route('/newuser',methods = ['POST', 'GET'])
+def saisie():
+	if request.method =='POST':
+		res = request.form.get( "nom" )
+		#return res.text()
+		if re.fullmatch( ".{6,}", str ) == None:
+			print( "Echec sur la condition 1" )
+		else:
+			if re.fullmatch ( ".*\d+.*", str ) == None:
+				print( "Echec sur la condition 2" )
+			else re.fullmatch( "[A-Z]+[a-z]+", str ) == None:
+				print( "Echec sur la condition 3" )
+			else re.fullmath ( "[#%\{\}@]+", str ) == None:
+				print( "Echec sur la condition 4" )
+		else
+			return None
+
+
 
 
 @app.route('/')

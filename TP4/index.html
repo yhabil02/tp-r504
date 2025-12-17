@@ -1,19 +1,15 @@
+<!doctype html>
 <html>
 <head>
-<title>Demo sql query in table</title>
+<title>Test d'entrée utilisateur</title>
 </head>
 <body>
 
-Table:
-<table>
-{% for row in data %}
-<tr>
-    {% for item in row %}
-      <td>{{ item }}</td>
-    {% endfor %}
-</tr>
-{% endfor %}
-</table>
+<form method='post' action='/newuser'>
+  <label for="name">Entrer une chaine de caractères:</label><br>
+  <input type="text" id="nom" name="nom">
+</form>
+
 </body>
 </html>
 

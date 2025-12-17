@@ -3,4 +3,4 @@ docker run -d \
 	--name tp4-app \
 	--network net-tp4 \
 	--mount type=bind,source="$(pwd)"/srv,target=/app \
-	im-TP4
+	im-tp4

@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  s_redis:
+    image: redis:latest
+    networks:
+      - myredis
+
+  s_prod:
+    build:
+      context: .
+      dockerfile: Dockerfile_p
+    depends_on:
+      - s_redis
+    networks:
+      - myredis
+
+  s_cons:
+    build:
+      context: .
+      dockerfile: Dockerfile_c
+    depends_on:
+      - s_redis
+    networks:
+      - myredis
+
+networks:
+  myredis:
+    driver: bridge

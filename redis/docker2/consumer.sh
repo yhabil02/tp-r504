@@ -5,14 +5,13 @@ queue_name="mafile"
 threshold=30000
 delay_process=4
 wait_empty=2
-# Nom du conteneur Redis (hôte)
-PARAM=s_redis
+# Informations de connexion Redis cloud
+PARAM="redis-12974.crce202.eu-west-3-1.ec2.cloud.redislabs.com -p 12974 -a MEdRXXUZACgigqh6J2sy6rxDQHckXrxs"
 
 # ===== Vérification connexion Redis =====
 redis-cli -h $PARAM DBSIZE >/dev/null
-if ! [ $? = 0 ]
-then
-    echo "Erreur, pas de connection avec le serveur redis!"
+if ! [ $? = 0 ]; then
+    echo "Erreur, pas de connection avec le serveur Redis!"
     exit 1
 fi
 
